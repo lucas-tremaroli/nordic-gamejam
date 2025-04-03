@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlgucxndpreba"]
+
+[ext_resource type="Script" uid="uid://cttf6tq8ca16f" path="res://hud.gd" id="1_37p78"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_37p78")
+
+[node name="PromptHud" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="PromptHud"]
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 1148.0
+offset_bottom = 200.0
+text = "Choose your player"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PromptTextEdit" type="TextEdit" parent="PromptHud"]
+offset_left = 371.0
+offset_top = 220.0
+offset_right = 792.0
+offset_bottom = 402.0
+
+[node name="SubmitButton" type="Button" parent="PromptHud"]
+offset_left = 720.0
+offset_top = 430.0
+offset_right = 783.0
+offset_bottom = 461.0
+text = "Submit"
+
+[node name="CharacterHud" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Name" type="Label" parent="CharacterHud"]
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 1148.0
+offset_bottom = 200.0
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Description" type="Label" parent="CharacterHud"]
+offset_left = 1.0
+offset_top = 232.0
+offset_right = 1151.0
+offset_bottom = 544.0
+
+[connection signal="pressed" from="PromptHud/SubmitButton" to="." method="_on_submit_button_pressed"]
