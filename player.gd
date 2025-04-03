@@ -49,7 +49,7 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "walk_up"
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	hide() # Replace with function body.
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
