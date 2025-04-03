@@ -207,3 +207,4 @@ position = Vector2(-2, 7)
 shape = SubResource("CapsuleShape2D_n7ghd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="hit" from="." to="." method="_game_over2"]
