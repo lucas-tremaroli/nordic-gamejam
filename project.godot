@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="nordic-gamejam"
-run/main_scene="uid://bkkqu0nkxc1jt"
+run/main_scene="uid://djruh1vmbe7cj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -3,11 +3,19 @@ extends Area2D
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
 
+func query_model():
+	var response = []
+	OS.execute("python_scripts/venv/bin/python", ["python_scripts/model_query.py", "A character that jumps high"], response)
+	print(response[0])
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	# hide()
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		query_model()
+	
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
