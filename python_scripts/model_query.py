@@ -17,6 +17,18 @@ messages = [{
         Format the output as a json object containing a list of abilities with a rating for each, a name of the character and a one sentence description of the character.
         The name should use existing terms and references from other games.
         The description should be fun to read and describe the strengths and weaknesses of the character without mentioning the underlying abilities.
+        The output format should be as:
+        {
+            "name": "...",
+            "description: "...",
+            "abilities": {
+                "movement_speed": 0,
+                "jump_height": 0,
+                "endurance": 0,
+                "attack_strength": 0,
+                "armor": 0
+            }
+        }
     """
 }]
 
