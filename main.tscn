@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cafjlfomcp5no"]
+[gd_scene load_steps=7 format=3 uid="uid://cafjlfomcp5no"]
 
 [ext_resource type="Script" uid="uid://dspfvca3i7dcv" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cv16818p7lrvj" path="res://Mobs/mob.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://barshhr8q1vae" path="res://Player/player.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" path="res://hud.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dlgucxndpreba" path="res://hud.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://g2lj3ngopqpj" path="res://Enemy/enemy.tscn" id="5_lquwl"]
 
 [sub_resource type="Curve2D" id="Curve2D_1bvp3"]
 _data = {
@@ -37,6 +38,9 @@ position = Vector2(24, 32)
 rotation = 0.00724625
 
 [node name="Hud" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="Enemy" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(288, 280)
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://barshhr8q1vae"]
 
-[ext_resource type="Texture2D" uid="uid://coryxixrrcrqn" path="res://Player/sprite_sheet.png" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://blv1i8agegvpe" path="res://Player/sprite_sheet.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b28l2okm2cov8" path="res://Player/player.gd" id="1_onrkg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
@@ -195,6 +195,7 @@ height = 50.0
 
 [node name="Player" type="Area2D"]
 position = Vector2(2, -3)
+collision_layer = 3
 script = ExtResource("1_onrkg")
 metadata/_edit_group_ = true
 
@@ -204,6 +205,7 @@ animation = &"walk_down"
 frame_progress = 0.92865
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2, 7)
 shape = SubResource("CapsuleShape2D_n7ghd")
 
