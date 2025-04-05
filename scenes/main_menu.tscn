@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7fmokpj12ags"]
+[gd_scene load_steps=10 format=3 uid="uid://b7fmokpj12ags"]
 
 [ext_resource type="Script" uid="uid://bpa1atam3lvbg" path="res://scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://chmsitjp6vrkh" path="res://assets/background.png" id="1_ekxnf"]
 [ext_resource type="FontFile" uid="uid://dvtgrbtapn7q4" path="res://assets/Black Pixel.ttf" id="2_bqqt6"]
+[ext_resource type="AudioStream" uid="uid://cf7t6n4qurjye" path="res://audio/pixelated_day.mp3" id="4_wu84c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("1_ekxnf")
@@ -131,6 +132,10 @@ theme_override_font_sizes/font_size = 72
 text = "The Prompted One"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MainMenuMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wu84c")
+volume_db = -5.0
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_how_to_play_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://brtyeo34aq1w"]
+[gd_scene load_steps=16 format=3 uid="uid://brtyeo34aq1w"]
 
 [ext_resource type="Script" uid="uid://5akdnlthp7hf" path="res://scripts/enemy.gd" id="1_tmani"]
 [ext_resource type="Texture2D" uid="uid://dm5vqcg5yc1xr" path="res://art/characters/little-bear-idle.png" id="2_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://ba30i28dd510c" path="res://art/characters/little-bear-walk.png" id="3_5uy6h"]
+[ext_resource type="AudioStream" uid="uid://d2o4y834l648w" path="res://audio/enemy_engage.wav" id="4_5uy6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
 atlas = ExtResource("2_4ra3w")
@@ -106,6 +107,11 @@ scale = Vector2(3.45671, 3.13542)
 energy = 0.75
 texture = SubResource("GradientTexture2D_5uy6h")
 texture_scale = 4.0
+
+[node name="EnemyEngageAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-0.333333, 0)
+stream = ExtResource("4_5uy6h")
+volume_db = 15.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

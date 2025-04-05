@@ -20,8 +20,8 @@ func _on_player_died():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if $AudioStreamPlayer.playing == false:
-		$AudioStreamPlayer.play()
+	if $BackgroundMusicAudioStreamPlayer.playing == false:
+		$BackgroundMusicAudioStreamPlayer.play()
 
 func end_dream_and_show_score(hours_slept: float):
 	var score_screen = preload("res://scenes/SleepScoreScreen.tscn").instantiate()
