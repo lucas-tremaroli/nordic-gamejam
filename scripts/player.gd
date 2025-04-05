@@ -8,7 +8,6 @@ var current_direction = "none"
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_in_progress = false
-
 signal player_died
 signal player_health_changed
 
@@ -39,7 +38,7 @@ func player_movement(delta: float) -> void:
 	elif Input.is_action_pressed("ui_up"):
 		current_direction = "up"
 		velocity.y = -speed
-			
+
 	if velocity.x == 0 and velocity.y == 0:
 		play_animation(0)
 		velocity.x = 0
@@ -47,10 +46,10 @@ func player_movement(delta: float) -> void:
 	else:
 		if !attack_in_progress:
 			play_animation(1)
-	
+
 	# Move diagonally at base speed
 	velocity = velocity.normalized() * speed
-	
+
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		if collision.get_collider().name == "Objects" or collision.get_collider().name == "MapBorder":
@@ -84,7 +83,7 @@ func play_animation(movement) -> void:
 		if movement == 1:
 			animation.play("back_walk")
 		elif movement == 0:
-			animation.play("back_idle") 
+			animation.play("back_idle")
 
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
@@ -105,7 +104,6 @@ func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown:
 		health -= 10
 		player_health_changed.emit()
-		print(health)
 		enemy_attack_cooldown = false
 		$EnemyAttackCooldown.start()
 
