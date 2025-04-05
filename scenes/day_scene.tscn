@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxtsdu72bfooo"]
+[gd_scene load_steps=14 format=3 uid="uid://busuy1125mfex"]
 
 [ext_resource type="Texture2D" uid="uid://cr13pbrnmy3qa" path="res://assets/park_bg.png" id="1_17stf"]
 [ext_resource type="Texture2D" uid="uid://c0nqfdpdn0v6e" path="res://assets/chat.png" id="1_7880o"]
 [ext_resource type="Script" uid="uid://cng3tm8c656s8" path="res://scripts/day_scene.gd" id="1_bqe03"]
 [ext_resource type="Texture2D" uid="uid://bdiu4o8iryxr0" path="res://assets/npc_head.png" id="1_iobdm"]
 [ext_resource type="Texture2D" uid="uid://cdtoyv6ttaoh3" path="res://assets/player_head.png" id="2_7880o"]
-[ext_resource type="FontFile" uid="uid://b4q162fvtmt45" path="res://assets/RoadPixel.ttf" id="3_akhj3"]
 [ext_resource type="FontFile" uid="uid://dvtgrbtapn7q4" path="res://assets/Black Pixel.ttf" id="6_lu5c5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7880o"]
@@ -21,6 +20,10 @@ texture = ExtResource("1_iobdm")
 texture = ExtResource("2_7880o")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lu5c5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqe03"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf760"]
 
 [node name="DayScene" type="CanvasLayer"]
 script = ExtResource("1_bqe03")
@@ -75,10 +78,9 @@ offset_bottom = -392.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_akhj3")
-theme_override_font_sizes/font_size = 50
-text = "How did you sleep last night,
- fought any light sources?"
+theme_override_fonts/font = ExtResource("6_lu5c5")
+theme_override_font_sizes/font_size = 29
+text = "Hmmmmmm..."
 autowrap_mode = 3
 clip_text = true
 
@@ -125,12 +127,17 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 488.0
+offset_left = 450.0
 offset_top = -632.0
-offset_right = 1136.0
+offset_right = 1252.0
 offset_bottom = -352.0
 grow_vertical = 0
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_lu5c5")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 49
 theme_override_styles/normal = SubResource("StyleBoxTexture_lu5c5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bqe03")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_gf760")
+placeholder_text = "Type Here..."

@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _enter_tree() -> void:
 	print("DayScene._enter_tree")
-	Thread.new().start(query_model_sleep_score.bind(10))
+	Thread.new().start(query_model_sleep_score.bind(0))
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_text_submit"):
@@ -42,3 +42,13 @@ func query_model_player_stats(prompt):
 	
 	print(body)
 	on_player_stats.emit(JSON.parse_string(body))
+	
+	print("changing scene")
+	get_tree().change_scene_to_file("res://scenes/sleeping.tscn")
+	
+		# Scene changes must be done on the main thread
+	call_deferred("_change_scene")
+
+func _change_scene():
+	print("Actually changing scene now")
+	get_tree().change_scene_to_file("res://scenes/sleeping.tscn")
