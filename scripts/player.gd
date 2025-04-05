@@ -7,16 +7,17 @@ var current_direction = "none"
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_in_progress = false
+signal player_died
 
 
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	enemy_attack()
-	
-	if health <= 0:
+
+	if health <= 0 and is_alive:
 		$AnimatedSprite2D.play("death")
 		is_alive = false
-
+		emit_signal("player_died")
 
 func player_movement(delta: float) -> void:
 	velocity = Vector2.ZERO
@@ -95,7 +96,7 @@ func player():
 
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown:
-		health -= 20
+		health -= 100
 		print(health)
 		enemy_attack_cooldown = false
 		$EnemyAttackCooldown.start()

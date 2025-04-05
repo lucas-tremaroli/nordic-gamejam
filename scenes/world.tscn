@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://tw1y4p16qms6"]
+[gd_scene load_steps=11 format=3 uid="uid://tw1y4p16qms6"]
 
+[ext_resource type="Script" uid="uid://ck5s838r8durf" path="res://scripts/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://nmadgoonxh8p" path="res://scenes/playerv2.tscn" id="1_w6l67"]
 [ext_resource type="PackedScene" uid="uid://brtyeo34aq1w" path="res://scenes/enemy.tscn" id="2_kdtuo"]
 [ext_resource type="Texture2D" uid="uid://huv5utvoyv33" path="res://art/tilesets/grass.png" id="3_hpcfq"]
@@ -76,11 +77,11 @@ texture = ExtResource("4_u8fkr")
 texture = ExtResource("5_qxsch")
 0:0/0 = 0
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3.42857, 8, -3.42857, 5.71429, 21.7143, -5.71429, 21.7143)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
 6:7/size_in_atlas = Vector2i(2, 2)
 6:7/0 = 0
-6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.2857, -12.5714, 8, -12.5714, 10.2857, 8, 11.4145, 25.7309, -12.5714, 26.2857, -12.5714, 8)
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:6/size_in_atlas = Vector2i(2, 3)
 8:6/0 = 0
 8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.2857, -3.42857, 8, -3.42857, 5.71429, 12.5714, -8, 12.5714)
@@ -92,7 +93,7 @@ texture = ExtResource("5_qxsch")
 11:2/0 = 0
 0:5/size_in_atlas = Vector2i(3, 4)
 0:5/0 = 0
-0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.14286, 5.71429, 1.14286, 8, 8, -8, 8)
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.5714, -5.71429, 10.2857, -5.71429, 12.5714, 26.2857, -12.5714, 26.2857)
 
 [sub_resource type="TileSet" id="TileSet_2al5j"]
 physics_layer_0/collision_layer = 16
@@ -103,6 +104,7 @@ sources/2 = SubResource("TileSetAtlasSource_xyyj7")
 
 [node name="world" type="Node2D"]
 position = Vector2(116, -631)
+script = ExtResource("1_qfnet")
 
 [node name="Enemy" parent="." instance=ExtResource("2_kdtuo")]
 
