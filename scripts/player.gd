@@ -46,7 +46,6 @@ func player_movement(delta: float) -> void:
 	velocity = velocity.normalized() * speed
 	
 	var collision = move_and_collide(velocity * delta)
-	print(collision)
 	if collision:
 		if collision.get_collider().name == "Objects" or collision.get_collider().name == "MapBorder":
 			velocity = velocity.slide(collision.get_normal())
