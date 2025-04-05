@@ -59,3 +59,6 @@ func _on_score_timer_timeout() -> void:
 	Global.seconds_survived += 1
 	Global.score = int(floor(Global.seconds_survived / 10))
 	hours_slept_label.text = "Hours slept: %d/10" % Global.score
+	
+	if Global.score == 10:
+		_on_player_died()

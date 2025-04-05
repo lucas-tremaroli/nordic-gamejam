@@ -5,7 +5,6 @@ var player_stats_data = null
 
 func _ready() -> void:
 	print("DayScene._ready")
-	Thread.new().start(init_model)
 
 func _enter_tree() -> void:
 	print("DayScene._enter_tree")
@@ -28,10 +27,6 @@ func _process(delta: float) -> void:
 	if npc_chat_response != null:
 		$NpcBubble/NpcText.text = npc_chat_response
 		npc_chat_response = null
-
-func init_model():
-	print("DayScene.init_model")
-	OS.execute("sh", ["python_scripts/init.sh"])
 
 func query_model_sleep_score(score):
 	print("DayScene.query_model_sleep_score")

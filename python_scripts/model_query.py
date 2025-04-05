@@ -125,7 +125,7 @@ if len(sys.argv) > 1:
     })
 
 response = asyncio.run(
-    client.chat.completions.create(model="gpt-4o-2024-08-06", messages=messages)
+    client.chat.completions.create(model="gpt-4o-2024-08-06", messages=messages, temperature=0.85)
 )
 response_text = response.choices[0].message.content
 

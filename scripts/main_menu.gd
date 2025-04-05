@@ -6,12 +6,12 @@ signal start_pressed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$MainMenuMusicAudioStreamPlayer.play()
-	pass # Replace with function body.
+	Thread.new().start(init_model)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func init_model():
+	print("main_menu.init_model")
+	OS.execute("sh", ["python_scripts/init.sh"])
 
 
 func _on_start_pressed() -> void:
