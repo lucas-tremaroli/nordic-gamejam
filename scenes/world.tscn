@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tw1y4p16qms6"]
+[gd_scene load_steps=20 format=3 uid="uid://tw1y4p16qms6"]
 
 [ext_resource type="Script" uid="uid://ck5s838r8durf" path="res://scripts/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://nmadgoonxh8p" path="res://scenes/playerv2.tscn" id="1_w6l67"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byb5adxwsy6hu" path="res://art/tilesets/plains.png" id="4_u8fkr"]
 [ext_resource type="Texture2D" uid="uid://b6wwvyu31u0jb" path="res://art/objects/objects.png" id="5_qxsch"]
 [ext_resource type="AudioStream" uid="uid://4dicvo1opt26" path="res://audio/pixelated_night.mp3" id="7_i7141"]
+[ext_resource type="FontFile" uid="uid://dggs4tknroyo3" path="res://assets/PIXEL CRAFT.ttf" id="8_4mrxx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y0jo2"]
 texture = ExtResource("3_hpcfq")
@@ -192,3 +193,16 @@ theme_override_styles/background = SubResource("StyleBoxFlat_7r4gi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_w7kh3")
 value = 100.0
 show_percentage = false
+
+[node name="HoursSlept" type="Label" parent="CanvasLayer"]
+offset_left = 97.0
+offset_top = 104.0
+offset_right = 815.0
+offset_bottom = 269.0
+theme_override_fonts/font = ExtResource("8_4mrxx")
+theme_override_font_sizes/font_size = 80
+text = "Hours slept: 0/10"
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
