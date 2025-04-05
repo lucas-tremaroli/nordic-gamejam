@@ -2,3 +2,4 @@
 .godot/
 /android/
 venv
+python_scripts/messages.json

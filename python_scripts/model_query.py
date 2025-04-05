@@ -1,5 +1,7 @@
 import asyncio
 import sys
+import os
+import json
 
 from openai import AsyncAzureOpenAI
 
@@ -10,45 +12,50 @@ client = AsyncAzureOpenAI(
 )
 
 messages = [{
-    "role": "system",
-    "content": """
-        You are a balancing trade-off agent to a game. Come with characteristics for a game character satisfying the prompt but balancing out any strengths with adequate weaknesses.
-        You have the following abilities to work with: [Movement speed, Jump height, Endurance, Attack strength, Armor]. Give the character a rating for each from 1 - 10, but the combined values can be maximum 25.
-        Format the output as a json object containing a list of abilities with a rating for each, a name of the character and a one sentence description of the character.
-        The name should use existing terms and references from other games.
-        The description should be fun to read and describe the strengths and weaknesses of the character without mentioning the underlying abilities.
-        The output format should be as:
-        {
-            "name": "...",
-            "description: "...",
-            "abilities": {
-                "movement_speed": 0,
-                "jump_height": 0,
-                "endurance": 0,
-                "attack_strength": 0,
-                "armor": 0
+        "role": "system",
+        "content": """
+            You are a balancing trade-off agent to a game. Come with characteristics for a game character satisfying the prompt but balancing out any strengths with adequate weaknesses.
+            You have the following abilities to work with: [Movement speed, Jump height, Endurance, Attack strength, Armor]. Give the character a rating for each from 1 - 10, but the combined values can be maximum 25.
+            Format the output as a json object containing a list of abilities with a rating for each, a name of the character and a one sentence description of the character.
+            The name should use existing terms and references from other games.
+            The description should be fun to read and describe the strengths and weaknesses of the character without mentioning the underlying abilities.
+            The output format should be as:
+            {
+                "name": "...",
+                "description: "...",
+                "abilities": {
+                    "movement_speed": 0,
+                    "jump_height": 0,
+                    "endurance": 0,
+                    "attack_strength": 0,
+                    "armor": 0
+                }
             }
-        }
-    """
+        """
 }]
 
-async def query_model(message: str):
-    messages.append({
-        "role": "user",
-        "content": message
-    })
-
-    response = await client.chat.completions.create(model="gpt-4o-mini-2024-07-18", messages=messages)
-    response_text = response.choices[0].message.content
-
-    messages.append({
-        "role": "assistant",
-        "content": response_text
-    })
-
-    return response_text
-
+if os.path.isfile("./messages.json"):
+    with open("./messages.json", "r") as file:
+        messages = json.load(file)
 
 prompt = sys.argv[1]
 
-sys.stdout.write(asyncio.run(query_model(prompt)))
+messages.append({
+    "role": "user",
+    "content": prompt
+})
+
+response = asyncio.run(
+    client.chat.completions.create(model="gpt-4o-mini-2024-07-18", messages=messages)
+)
+response_text = response.choices[0].message.content
+
+messages.append({
+    "role": "assistant",
+    "content": response_text
+})
+
+with open("./messages.json", "w+") as file:
+    json.dump(messages, file)
+
+sys.stdout.write(response_text)
