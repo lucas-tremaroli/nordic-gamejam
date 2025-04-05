@@ -4,7 +4,7 @@ var speed = 800
 var max_health = 100
 var health = max_health
 var is_alive = true
-var current_direction = "none"
+var current_direction = "down"
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_in_progress = false
@@ -19,8 +19,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	enemy_attack()
-	if health <= 0 and is_alive:
+	attack()
+	if health <= 0:
 		is_alive = false
+		health = 0
 		emit_signal("player_died")
 
 
@@ -65,25 +67,29 @@ func play_animation(movement) -> void:
 		if movement == 1:
 			animation.play("side_walk")
 		elif movement == 0:
-			animation.play("side_idle")
+			if !attack_in_progress:
+				animation.play("side_idle")
 	if dir == "left":
 		animation.flip_h = true
 		if movement == 1:
 			animation.play("side_walk")
 		elif movement == 0:
-			animation.play("side_idle")
+			if !attack_in_progress:
+				animation.play("side_idle")
 	if dir == "down":
 		animation.flip_h = true
 		if movement == 1:
 			animation.play("front_walk")
 		elif movement == 0:
-			animation.play("front_idle")
+			if !attack_in_progress:
+				animation.play("front_idle")
 	if dir == "up":
 		animation.flip_h = true
 		if movement == 1:
 			animation.play("back_walk")
 		elif movement == 0:
-			animation.play("back_idle")
+			if !attack_in_progress:
+				animation.play("back_idle")
 
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
@@ -115,15 +121,26 @@ func _on_enemy_attack_cooldown_timeout() -> void:
 func attack():
 	var dir = current_direction
 	if Input.is_action_just_pressed("Attack"):
+		print("attack")
 		Global.player_current_attack = true
 		attack_in_progress = true
 		if dir == "right":
 			$AnimatedSprite2D.flip_h = false
 			$AnimatedSprite2D.play("side_attack")
+			$AttackCooldown.start()
 		if dir == "left":
 			$AnimatedSprite2D.flip_h = true
 			$AnimatedSprite2D.play("side_attack")
+			$AttackCooldown.start()
 		if dir == "up":
 			$AnimatedSprite2D.play("back_attack")
+			$AttackCooldown.start()
 		if dir == "down":
 			$AnimatedSprite2D.play("front_attack")
+			$AttackCooldown.start()
+
+
+func _on_attack_cooldown_timeout() -> void:
+	$AttackCooldown.stop()
+	Global.player_current_attack = false
+	attack_in_progress = false
