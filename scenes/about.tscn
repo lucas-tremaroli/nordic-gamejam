@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3 uid="uid://bketwo2muovkl"]
+
+[ext_resource type="Texture2D" uid="uid://cxxqxtfn0ns0d" path="res://assets/Tuc Crackers Logo.png" id="1_23fuk"]
+[ext_resource type="Script" uid="uid://b1v4mf63lacuk" path="res://scripts/about.gd" id="1_lloox"]
+[ext_resource type="Texture2D" uid="uid://f07thmc3h08t" path="res://assets/rat.png" id="2_lloox"]
+[ext_resource type="Texture2D" uid="uid://c308kpcdylpmi" path="res://assets/about.png" id="3_cm4eg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i537c"]
+bg_color = Color(0.118581, 0.118581, 0.118581, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_23fuk"]
+texture = ExtResource("3_cm4eg")
+
+[node name="About" type="CanvasLayer"]
+script = ExtResource("1_lloox")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i537c")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1223.0
+offset_top = -205.5
+offset_right = -472.0
+offset_bottom = 205.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Brought to you by 
+developers who also 
+gave you the Rat Game
+Robert, Emil, Lucas & Lukas
+"
+vertical_alignment = 1
+
+[node name="Rat" type="Sprite2D" parent="Label"]
+position = Vector2(556, 198.5)
+scale = Vector2(0.218575, 0.223433)
+texture = ExtResource("2_lloox")
+
+[node name="TucCrackersLogo" type="Sprite2D" parent="Label"]
+position = Vector2(391, 472.5)
+scale = Vector2(0.482143, 0.482143)
+texture = ExtResource("1_23fuk")
+
+[node name="Label" type="Label" parent="Label"]
+offset_left = -21.0
+offset_top = 390.0
+offset_right = 343.0
+offset_bottom = 585.0
+theme_override_font_sizes/font_size = 45
+text = "Sponsored by"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+position = Vector2(1158, 937)
+
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 760.0
+offset_top = -394.5
+offset_right = 1549.0
+offset_bottom = 394.5
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_23fuk")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.5
+offset_top = -205.0
+offset_right = 101.5
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Back
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

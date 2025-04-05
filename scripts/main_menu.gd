@@ -28,4 +28,4 @@ func _on_how_to_play_pressed() -> void:
 
 
 func _on_about_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/about.tscn")

@@ -1,18 +1,18 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7fmokpj12ags"]
 
 [ext_resource type="Script" uid="uid://bpa1atam3lvbg" path="res://scripts/main_menu.gd" id="1_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://chmsitjp6vrkh" path="res://assets/background.png" id="1_ekxnf"]
 [ext_resource type="FontFile" uid="uid://dvtgrbtapn7q4" path="res://assets/Black Pixel.ttf" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://4xvbdunv5odl" path="res://assets/dreamy_bg.png" id="2_wu84c"]
 [ext_resource type="AudioStream" uid="uid://cf7t6n4qurjye" path="res://audio/pixelated_day.mp3" id="4_wu84c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
-texture = ExtResource("1_ekxnf")
+texture = ExtResource("2_wu84c")
 modulate_color = Color(0.452586, 0.452586, 0.452586, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vrkn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
-bg_color = Color(0.684185, 0.308532, 2.88785e-07, 1)
+bg_color = Color(0.541505, 0.238242, 0.465068, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -30,7 +30,7 @@ shadow_size = 4
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
-bg_color = Color(0.104344, 0.611742, 5.77569e-07, 1)
+bg_color = Color(0.328831, 0.00113107, 0.752276, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -75,7 +75,7 @@ theme_override_constants/separation = 29
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0.000556021, 0.000295788, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 33
@@ -89,7 +89,7 @@ text = "Start Game"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 33
@@ -103,7 +103,7 @@ text = "How to Play"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 33
@@ -128,7 +128,7 @@ offset_bottom = -190.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_bqqt6")
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 90
 text = "The Prompted One"
 horizontal_alignment = 1
 vertical_alignment = 1
