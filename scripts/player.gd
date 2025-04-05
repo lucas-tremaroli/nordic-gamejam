@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 410
+var speed = 800
 var health = 500
 var is_alive = true
 var current_direction = "none"
@@ -20,36 +20,35 @@ func _physics_process(delta: float) -> void:
 		emit_signal("player_died")
 
 func player_movement(delta: float) -> void:
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("ui_right"):
 		current_direction = "right"
 		velocity.x = speed
-		velocity.y = 0
-		if !attack_in_progress:
-			play_animation(1)
 	elif Input.is_action_pressed("ui_left"):
 		current_direction = "left"
 		velocity.x = -speed
-		velocity.y = 0
-		if !attack_in_progress:
-			play_animation(1)
-	elif Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down"):
 		current_direction = "down"
-		velocity.x = 0
 		velocity.y = speed
-		if !attack_in_progress:
-			play_animation(1)
 	elif Input.is_action_pressed("ui_up"):
 		current_direction = "up"
-		velocity.x = 0
 		velocity.y = -speed
-		if !attack_in_progress:
-			play_animation(1)
-	else:
+			
+	if velocity.x == 0 and velocity.y == 0:
 		play_animation(0)
 		velocity.x = 0
 		velocity.y = 0
+	else:
+		if !attack_in_progress:
+			play_animation(1)
 	
-	move_and_slide()
+	# Move diagonally at base speed
+	velocity = velocity.normalized() * speed
+	
+	var collision = move_and_collide(velocity * delta)
+	if collision and collision.get_collider().name == "Objects":
+		velocity = velocity.slide(collision.get_normal())
+		move_and_collide(velocity * delta) # Glide along objects
 
 
 func play_animation(movement) -> void:
