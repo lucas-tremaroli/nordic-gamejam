@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player = $Player
 @onready var health_bar
+@onready var hours_slept_label
 
 @export var enemy_scene : PackedScene
 var enemy_timer = 0
@@ -13,12 +14,17 @@ func _ready() -> void:
 	player.connect("player_died", Callable(self, "_on_player_died"))
 	player.connect("player_health_changed", Callable(self, "_on_player_health_update"))
 	health_bar = get_node("CanvasLayer/HealthBar")
+	hours_slept_label = get_node("CanvasLayer/HoursSlept")
+	
+	Global.seconds_survived = 0
+	Global.score = 0
+	$ScoreTimer.start()
 
 
 func _on_player_died():
 	print("Player has died")
 	
-	Global.score = 3.5
+	$ScoreTimer.stop()
 	var score_screen = preload("res://scenes/SleepScoreScreen.tscn").instantiate()
 	
 	add_child(score_screen)
@@ -56,3 +62,9 @@ func spawn_enemies():
 func _on_player_health_update():
 	print("HEALTHBAR VALUE: ", player.hitpoints)
 	health_bar.value = player.hitpoints * 100 / player.max_hitpoints
+
+
+func _on_score_timer_timeout() -> void:
+	Global.seconds_survived += 1
+	Global.score = floor(Global.seconds_survived / 20)
+	hours_slept_label.text = "Hours slept: " + str(Global.score) + "/10"

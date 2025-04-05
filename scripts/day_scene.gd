@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _enter_tree() -> void:
 	print("DayScene._enter_tree")
-	Thread.new().start(query_model_sleep_score.bind(10))
+	Thread.new().start(query_model_sleep_score.bind(Global.score))
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_text_submit"):
@@ -36,6 +36,7 @@ func init_model():
 func query_model_sleep_score(score):
 	print("DayScene.query_model_sleep_score")
 	var response = []
+	print("Score sent to the llm", score)
 	OS.execute("python_scripts/venv/bin/python", ["python_scripts/model_query.py", '1', score], response)
 	var body = response[0]
 	
