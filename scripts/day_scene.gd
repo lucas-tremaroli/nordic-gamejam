@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		Global.player_endurance_stat_multiplier = player_stats_data["endurance"]
 		Global.player_attack_strength_stat_multiplier = player_stats_data["attack_strength"]
 		player_stats_data = null
-		get_tree().change_scene_to_file("res://scenes/world.tscn")
+		get_tree().change_scene_to_file("res://scenes/sleeping.tscn")
 	
 	if npc_chat_response != null:
 		$NpcBubble/NpcText.text = npc_chat_response
@@ -50,9 +50,3 @@ func query_model_player_stats(prompt):
 	print(body)
 	
 	player_stats_data = JSON.parse_string(body)
-	# Scene changes must be done on the main thread
-	call_deferred("_change_scene")
-
-func _change_scene():
-	print("Actually changing scene now")
-	get_tree().change_scene_to_file("res://scenes/sleeping.tscn")
