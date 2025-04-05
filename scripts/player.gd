@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var speed = 110
-var health = 100
+var speed = 410
+var health = 500
 var is_alive = true
 var current_direction = "none"
 var enemy_in_attack_range = false
