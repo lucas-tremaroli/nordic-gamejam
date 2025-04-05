@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 40
+var speed = 300
 var health = 100
 var player = null
 var player_chase = false
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			$AnimatedSprite2D.flip_h = false
 	else:
-		$AnimatedSprite2D.play("front_idle")
+		$AnimatedSprite2D.play("idle")
 
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
