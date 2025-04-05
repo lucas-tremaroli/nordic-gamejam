@@ -5,7 +5,7 @@ extends Node2D
 
 @export var enemy_scene : PackedScene
 var enemy_timer = 0
-var enemy_timer_threshold : int = 5
+var enemy_timer_threshold : int = 4
 
 
 # Called when the node enters the scene tree for the first time.

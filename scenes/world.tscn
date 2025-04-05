@@ -105,9 +105,9 @@ sources/2 = SubResource("TileSetAtlasSource_xyyj7")
 
 [sub_resource type="Curve2D" id="Curve2D_qfnet"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -3531, -1047, 0, 0, 0, 0, 3472, -965, 0, 0, 0, 0, -3559, 3601, 0, 0, 0, 0, 3376, 3511, 0, 0, 0, 0, -3448, 1094, 0, 0, 0, 0, 3293, 1397)
+"points": PackedVector2Array(0, 0, 0, 0, -517, 2266, 0, 0, 0, 0, -515, 1379, 0, 0, 0, 0, 1207, 1418, 0, 0, 0, 0, 1163, 2244, 0, 0, 0, 0, -409, 2238)
 }
-point_count = 6
+point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
 size = Vector2(10316, 198)
@@ -152,8 +152,8 @@ layer_0/tile_data = PackedInt32Array(-196600, 2, 5, -131062, 2, 5, -65524, 2, 5,
 curve = SubResource("Curve2D_qfnet")
 
 [node name="EnemySpawnPathFollow" type="PathFollow2D" parent="EnemySpawnPath"]
-position = Vector2(-3531, -1047)
-rotation = 0.0117087
+position = Vector2(-517, 2266)
+rotation = -1.56854
 
 [node name="MapBorder" type="StaticBody2D" parent="."]
 position = Vector2(-1, 0)
