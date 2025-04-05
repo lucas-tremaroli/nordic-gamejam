@@ -5,7 +5,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hours_label.text = "You Slept \n %.1f Hours" % Global.score
+	hours_label.text = "You Slept \n %d Hours" % Global.score
 
 
 func _on_wake_up_button_pressed() -> void:

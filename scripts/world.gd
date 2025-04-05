@@ -40,15 +40,6 @@ func _process(delta: float) -> void:
 		$BackgroundMusicAudioStreamPlayer.play()
 
 
-func end_dream_and_show_score(hours_slept: float):
-	var score_screen = preload("res://scenes/SleepScoreScreen.tscn").instantiate()
-	add_child(score_screen)
-	score_screen.set_score(hours_slept)
-	# Optional: Pause the game while the screen is shown
-	get_tree().paused = true
-	#score_screen.pause_mode = Node.PAUSE_MODE_PROCESS
-
-
 func spawn_enemies():
 	if enemy_timer > enemy_timer_threshold:
 		var enemy = enemy_scene.instantiate()
@@ -66,5 +57,5 @@ func _on_player_health_update():
 
 func _on_score_timer_timeout() -> void:
 	Global.seconds_survived += 1
-	Global.score = floor(Global.seconds_survived / 20)
-	hours_slept_label.text = "Hours slept: " + str(Global.score) + "/10"
+	Global.score = int(floor(Global.seconds_survived / 10))
+	hours_slept_label.text = "Hours slept: %d/10" % Global.score
