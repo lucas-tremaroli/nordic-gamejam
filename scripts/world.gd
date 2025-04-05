@@ -22,7 +22,8 @@ func _on_player_died():
 	var score_screen = preload("res://scenes/SleepScoreScreen.tscn").instantiate()
 	
 	add_child(score_screen)
-	score_screen.process_mode = Node.PROCESS_MODE_PAUSABLE	
+	score_screen.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +32,15 @@ func _process(delta: float) -> void:
 	spawn_enemies()
 	if $BackgroundMusicAudioStreamPlayer.playing == false:
 		$BackgroundMusicAudioStreamPlayer.play()
+
+
+func end_dream_and_show_score(hours_slept: float):
+	var score_screen = preload("res://scenes/SleepScoreScreen.tscn").instantiate()
+	add_child(score_screen)
+	score_screen.set_score(hours_slept)
+	# Optional: Pause the game while the screen is shown
+	get_tree().paused = true
+	#score_screen.pause_mode = Node.PAUSE_MODE_PROCESS
 
 
 func spawn_enemies():

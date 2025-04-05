@@ -10,4 +10,5 @@ func _ready() -> void:
 
 func _on_wake_up_button_pressed() -> void:
 	print("wake up button pressed")
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/day_scene.tscn")
