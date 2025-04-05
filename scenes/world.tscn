@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tw1y4p16qms6"]
+[gd_scene load_steps=15 format=3 uid="uid://tw1y4p16qms6"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://nmadgoonxh8p" path="res://scenes/playerv2.tscn" id="1_w6l67"]
@@ -102,6 +102,18 @@ sources/0 = SubResource("TileSetAtlasSource_y0jo2")
 sources/1 = SubResource("TileSetAtlasSource_8cv75")
 sources/2 = SubResource("TileSetAtlasSource_xyyj7")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
+size = Vector2(10316, 198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7141"]
+size = Vector2(10316, 198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrxx"]
+size = Vector2(294, 6862)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4gi"]
+size = Vector2(318, 6862)
+
 [node name="world" type="Node2D"]
 position = Vector2(116, -631)
 script = ExtResource("1_qfnet")
@@ -123,3 +135,24 @@ scale = Vector2(7, 7)
 tile_set = SubResource("TileSet_2al5j")
 format = 2
 layer_0/tile_data = PackedInt32Array(-196600, 2, 5, -131062, 2, 5, -65524, 2, 5, -65528, 2, 5, 9, 2, 5, -196596, 2, 5, -262134, 2, 5, -196598, 2, 5, -196611, 2, 5, -11, 2, 5, 327671, 2, 5, 1048573, 2, 5, 589830, 2, 5, 589821, 2, 5, 655368, 2, 5, 589828, 2, 5, 720902, 2, 5, 786440, 2, 5, 851952, 2, 5, 393190, 2, 5, 458726, 2, 5, -589844, 2, 5, -589848, 2, 5, -458777, 2, 5, -917487, 2, 5, -327652, 2, 5, -327651, 2, 5, 851994, 2, 5, 917530, 2, 5, 1966091, 2, 5, 1834990, 2, 5, 1834991, 2, 5, 2031611, 2, 5, 2162676, 2, 5, 1507302, 2, 5, 1507292, 2, 5, 1769498, 2, 5, 1835034, 2, 5, 65572, 2, 5, 524323, 2, 5, -37, 2, 5, -65569, 2, 5, 327692, 393218, 7, 393229, 393218, 7, 393230, 393218, 7, 393226, 393218, 7, 1245176, 393218, 7, 1376249, 393218, 7, 1310733, 393218, 7, 327705, 393218, 7, -18, 393218, 7, 458733, 393218, 7, 1638405, 524290, 6, 1310744, 524290, 6, 327709, 524290, 6, 327707, 524290, 6, 393243, 524290, 6, 393244, 524290, 6, 27, 524290, 6, 65563, 524290, 6, -131052, 524290, 6, 983012, 524290, 6, 983009, 524290, 6, 1114088, 524290, 6, -26, 524290, 6, 1048589, 2, 1, 1114127, 2, 1, 1114126, 2, 1, 458772, 2, 1, 589844, 2, 1, 196590, 2, 1, 262126, 2, 1, -131093, 2, 1, 131042, 2, 1, 786402, 2, 1, 786407, 2, 1, 851944, 2, 1, 786408, 2, 1, 1376242, 2, 1, 1376239, 2, 1, 1769470, 2, 1, -589835, 2, 1, -786446, 2, 1, -589809, 2, 1, -786423, 2, 1, -851967, 2, 1, -589822, 2, 1, -524286, 2, 1, -720894, 2, 1, -786436, 2, 1, -917515, 2, 1, -917529, 2, 1, -720927, 2, 1, -786468, 2, 1, -983030, 2, 1, -917476, 2, 1, -851940, 2, 1, 1310726, 2, 1, 1703952, 2, 1, 1769488, 2, 1, 1507348, 2, 1, 1835028, 2, 1, 1245217, 2, 1, 1572897, 2, 1, 1441824, 2, 1, 1507360, 2, 1, 1966053, 2, 1, 1966047, 2, 1, 2031592, 2, 1, 2097128, 2, 1, 1966051, 2, 1, 524252, 2, 1, 589788, 2, 1)
+
+[node name="MapBorder" type="StaticBody2D" parent="."]
+position = Vector2(-1, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(13, -2329)
+shape = SubResource("RectangleShape2D_qfnet")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(-49, 4242)
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(-4951, 936)
+shape = SubResource("RectangleShape2D_4mrxx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(4746, 922)
+shape = SubResource("RectangleShape2D_7r4gi")

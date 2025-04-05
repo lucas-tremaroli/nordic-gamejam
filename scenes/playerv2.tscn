@@ -445,9 +445,9 @@ shape = SubResource("CircleShape2D_g6ldo")
 [node name="EnemyAttackCooldown" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -4500
-limit_top = -2800
-limit_right = 4500
+limit_left = -4700
+limit_top = -2890
+limit_right = 4710
 limit_bottom = 3500
 
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
