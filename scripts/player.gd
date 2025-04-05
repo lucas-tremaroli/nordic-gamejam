@@ -10,6 +10,9 @@ var current_direction = "down"
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_in_progress = false
+
+@onready var projectile = load("res://scenes/projectile.tscn")
+
 signal player_died
 signal player_health_changed
 
@@ -42,6 +45,9 @@ func player_movement(delta: float) -> void:
 	elif Input.is_action_pressed("ui_up"):
 		current_direction = "up"
 		velocity.y = -1
+		
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 	if velocity.x == 0 and velocity.y == 0:
 		play_animation(0)
@@ -146,3 +152,18 @@ func _on_attack_cooldown_timeout() -> void:
 	$AttackCooldown.stop()
 	Global.player_current_attack = false
 	attack_in_progress = false
+
+
+func shoot():
+	print("shoot")
+	var instance = projectile.instantiate()
+	instance.position = position
+	if current_direction == "right":
+		instance.direction.x = 1
+	if current_direction == "left":
+		instance.direction.x = -1
+	if current_direction == "up":
+		instance.direction.y = -1
+	if current_direction == "down":
+		instance.direction.y = 1
+	get_parent().add_child.call_deferred(instance)

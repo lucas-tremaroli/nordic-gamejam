@@ -15,7 +15,7 @@ func _ready() -> void:
 	player.connect("player_health_changed", Callable(self, "_on_player_health_update"))
 	health_bar = get_node("CanvasLayer/HealthBar")
 	hours_slept_label = get_node("CanvasLayer/HoursSlept")
-	
+
 	Global.seconds_survived = 0
 	Global.score = 0
 	$ScoreTimer.start()
@@ -23,10 +23,10 @@ func _ready() -> void:
 
 func _on_player_died():
 	print("Player has died")
-	
+
 	$ScoreTimer.stop()
 	var score_screen = preload("res://scenes/SleepScoreScreen.tscn").instantiate()
-	
+
 	add_child(score_screen)
 	score_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
@@ -49,7 +49,7 @@ func spawn_enemies():
 		add_child(enemy)
 		enemy_timer = 0
 
-	
+
 func _on_player_health_update():
 	print("HEALTHBAR VALUE: ", player.hitpoints)
 	health_bar.value = player.hitpoints * 100 / player.max_hitpoints
@@ -59,6 +59,6 @@ func _on_score_timer_timeout() -> void:
 	Global.seconds_survived += 1
 	Global.score = int(floor(Global.seconds_survived / 10))
 	hours_slept_label.text = "Hours slept: %d/10" % Global.score
-	
+
 	if Global.score == 10:
 		_on_player_died()
