@@ -107,93 +107,16 @@ Output:
 # Player Input:
 """
 
-
-
-
-generate_monster_stats_system_prompt = f"""
-{background_info}
-
-# Output
-Given the player's description of how they felt about their dream and how they wished their character was different in terms of stats, generate a new set of character stats for the player. The four player stats are: movement_speed, endurance, hitpoints, attack_strength. Your output should be a JSON object with the following format:
-{{
-    "speed": speed value,
-    "endurance": endurance value,
-    "hitpoints": hitpoints value,
-    "attack_strength": attack_strength value
-}}
-
-Constraints: Each stat should have a value between 1 and 10 (both inclusive). Ensure that the stats are balanced in a way where if you increase your speed you cannot at the same time be super strong in your attacks and have a lot of hitpoints. The combined maximum of the player stats should be 20.
-
-For example if they players something like "I wish I was faster" you should generate a set of stats where the speed stat is hig. If they say something like "I wish I was stronger" you should generate stats with the attack_strength being high.
-
-# Example
-Input player prompt: "I had a rough time. I wish I was faster and better at fighting"
-
-Your response:
-{{
-    "speed": 7,
-    "endurance": 3,
-    "hitpoints": 3,
-    "attack_strength": 7
-}}
-
-# Player input
-"""
-
-
-
-generate_monster_stats_system_prompt_2 = f"""
-{background_info}
-
-# Task
-Given the player's description of how they felt about their dream and how they wished their character was different in terms of stats, generate a new set of character stats for the player.
-
-# Player Stats
-- movement_speed
-- endurance
-- hitpoints
-- attack_strength
-
-Each stat:
-- Must be an integer between 1 and 10 (inclusive)
-- The combined total must NOT exceed 20
-
-Balance rules:
-- If one stat is high, others must be lower. For example, if speed is high, you cannot also have high hitpoints and attack_strength.
-
-# Output format (IMPORTANT)
-⚠️ You must respond ONLY with a valid JSON object. Do NOT include explanations or additional text.
-Use this format **exactly**:
-
-{{
-    "movement_speed": <int>,
-    "endurance": <int>,
-    "hitpoints": <int>,
-    "attack_strength": <int>
-}}
-
-Example:
-Input: "I wish I was faster and stronger."
-Output:
-{{
-    "movement_speed": 7,
-    "endurance": 2,
-    "hitpoints": 3,
-    "attack_strength": 8
-}}
-
-# Player Input:
-"""
-
-
 messages = [{
     "role": "system",
-    "content": generate_monster_stats_system_prompt_2
+    "content": generate_monster_stats_system_prompt
 }]
 
 if os.path.isfile("./messages.json"):
     with open("./messages.json", "r") as file:
-        messages = json.load(file)
+        messages += json.load(file)
+
+print(messages)
 
 if len(sys.argv) > 1:
     prompt = sys.argv[1]
@@ -214,6 +137,7 @@ messages.append({
 })
 
 with open("./messages.json", "w+") as file:
-    json.dump(messages, file)
+    messages_without_system_prompt = [msg for msg in messages if msg["role"] != "system"]
+    json.dump(messages_without_system_prompt, file)
 
 sys.stdout.write(response_text)
