@@ -1,8 +1,7 @@
 extends CanvasLayer
 
-signal on_player_stats(player_stats)
-
 var npc_chat_response = null
+var player_stats_data = null
 
 func _ready() -> void:
 	print("DayScene._ready")
@@ -17,7 +16,15 @@ func _process(delta: float) -> void:
 		print("DayScene._process.ui_accept")
 		print(Thread.new().start(query_model_player_stats.bind($UserBubble/PromptTextEdit.text)))
 		$UserBubble/PromptTextEdit.editable = false
-		
+	
+	if player_stats_data:
+		Global.player_movement_speed_stat_multiplier = player_stats_data["movement_speed"]
+		Global.player_hitpoints_stat_multiplier = player_stats_data["hitpoints"]
+		Global.player_endurance_stat_multiplier = player_stats_data["endurance"]
+		Global.player_attack_strength_stat_multiplier = player_stats_data["attack_strength"]
+		player_stats_data = null
+		get_tree().change_scene_to_file("res://scenes/world.tscn")
+	
 	if npc_chat_response != null:
 		$NpcBubble/NpcText.text = npc_chat_response
 		npc_chat_response = null
@@ -52,3 +59,5 @@ func query_model_player_stats(prompt):
 func _change_scene():
 	print("Actually changing scene now")
 	get_tree().change_scene_to_file("res://scenes/sleeping.tscn")
+	
+	player_stats_data = JSON.parse_string(body)

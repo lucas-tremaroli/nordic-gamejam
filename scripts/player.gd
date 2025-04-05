@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
-var speed = 800
-var max_health = 100
-var health = max_health
+var speed_base_value = 100
+var hitpoints_base_value = 10
+
+@onready var max_hitpoints = Global.player_hitpoints_stat_multiplier * hitpoints_base_value
+@onready var hitpoints = max_hitpoints
 var is_alive = true
 var current_direction = "down"
 var enemy_in_attack_range = false
@@ -20,9 +22,9 @@ func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	enemy_attack()
 	attack()
-	if health <= 0:
+	if hitpoints <= 0:
 		is_alive = false
-		health = 0
+		hitpoints = 0
 		emit_signal("player_died")
 
 
@@ -30,16 +32,16 @@ func player_movement(delta: float) -> void:
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("ui_right"):
 		current_direction = "right"
-		velocity.x = speed
+		velocity.x = 1
 	elif Input.is_action_pressed("ui_left"):
 		current_direction = "left"
-		velocity.x = -speed
+		velocity.x = -1
 	if Input.is_action_pressed("ui_down"):
 		current_direction = "down"
-		velocity.y = speed
+		velocity.y = 1
 	elif Input.is_action_pressed("ui_up"):
 		current_direction = "up"
-		velocity.y = -speed
+		velocity.y = -1
 
 	if velocity.x == 0 and velocity.y == 0:
 		play_animation(0)
@@ -50,7 +52,7 @@ func player_movement(delta: float) -> void:
 			play_animation(1)
 
 	# Move diagonally at base speed
-	velocity = velocity.normalized() * speed
+	velocity = velocity.normalized() * Global.player_movement_speed_stat_multiplier * speed_base_value
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:
@@ -108,7 +110,7 @@ func player():
 
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown:
-		health -= 10
+		hitpoints -= 10
 		player_health_changed.emit()
 		enemy_attack_cooldown = false
 		$EnemyAttackCooldown.start()

@@ -1,18 +1,14 @@
 extends CanvasLayer
 
+@onready var hours_label = $HoursLabel  # this will find your Label node automatically
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	hours_label.text = "You Slept \n %.1f Hours" % Global.score
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-@onready var hours_label = $HoursLabel  # this will find your Label node automatically
-
-func set_score(hours_slept: float) -> void:
-	print("Hours slept", hours_slept)
-	print(hours_label)
-	hours_label.text = "You Slept \n %.1f Hours" % hours_slept
+func _on_wake_up_button_pressed() -> void:
+	print("wake up button pressed")
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/day_scene.tscn")

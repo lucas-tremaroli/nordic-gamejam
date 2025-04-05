@@ -78,7 +78,7 @@ text = "You Slept
 7 Hours"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="WakeUpButton" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -98,3 +98,5 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_14htt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_14htt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ukw2y")
 text = "Wake Up"
+
+[connection signal="pressed" from="WakeUpButton" to="." method="_on_wake_up_button_pressed"]
