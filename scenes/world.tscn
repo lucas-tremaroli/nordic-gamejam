@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tw1y4p16qms6"]
+[gd_scene load_steps=19 format=3 uid="uid://tw1y4p16qms6"]
 
 [ext_resource type="Script" uid="uid://ck5s838r8durf" path="res://scripts/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://nmadgoonxh8p" path="res://scenes/playerv2.tscn" id="1_w6l67"]
@@ -121,6 +121,12 @@ size = Vector2(294, 6862)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4gi"]
 size = Vector2(318, 6862)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r4gi"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7kh3"]
+bg_color = Color(0.743186, 1.9132e-06, 3.85046e-07, 1)
+
 [node name="world" type="Node2D"]
 position = Vector2(116, -631)
 script = ExtResource("1_qfnet")
@@ -173,3 +179,16 @@ shape = SubResource("RectangleShape2D_7r4gi")
 [node name="BackgroundMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_i7141")
 volume_db = -5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+offset_left = 2102.0
+offset_top = 141.0
+offset_right = 2769.0
+offset_bottom = 228.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7r4gi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w7kh3")
+value = 100.0
+show_percentage = false
