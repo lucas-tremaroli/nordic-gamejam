@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-signal player_died
-
 var speed = 800
 var max_health = 100
 var health = max_health
@@ -104,10 +102,8 @@ func player():
 
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown:
-		health -= 100
 		health -= 10
 		player_health_changed.emit()
-		print(health)
 		enemy_attack_cooldown = false
 		$EnemyAttackCooldown.start()
 
