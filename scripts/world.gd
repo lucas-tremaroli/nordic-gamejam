@@ -38,9 +38,8 @@ func end_dream_and_show_score(hours_slept: float):
 func spawn_enemies():
 	if enemy_timer > enemy_timer_threshold:
 		var enemy = enemy_scene.instantiate()
-		var enemy_spawn_location = $Enemy/EnemySpawns/EnemySpawnLocation
+		var enemy_spawn_location = $EnemySpawnPath/EnemySpawnPathFollow
 		enemy_spawn_location.progress_ratio = randf()
 		enemy.position = enemy_spawn_location.position
 		add_child(enemy)
-		print("enemy spawned")
 		enemy_timer = 0

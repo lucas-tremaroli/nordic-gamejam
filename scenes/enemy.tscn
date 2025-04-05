@@ -72,7 +72,7 @@ fill_to = Vector2(0.662844, 0.261468)
 
 [sub_resource type="Curve2D" id="Curve2D_4ra3w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1471, -636.667, 0, 0, 0, 0, 1379, 611, 0, 0, 0, 0, 1356, -571.333, 0, 0, 0, 0, -1490, 641.667)
+"points": PackedVector2Array(0, 0, 0, 0, -1143.33, -614, 0, 0, 0, 0, 1331.67, -537.667, 0, 0, 0, 0, 1397.33, 733, 0, 0, 0, 0, -1045, 675.333)
 }
 point_count = 4
 
@@ -119,9 +119,8 @@ texture_scale = 4.0
 curve = SubResource("Curve2D_4ra3w")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawns"]
-position = Vector2(-1490, 641.667)
-rotation = 2.7387
-progress = 15517.2
+position = Vector2(-1143.33, -614)
+rotation = 0.030832
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
