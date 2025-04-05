@@ -432,9 +432,8 @@ shape = SubResource("CircleShape2D_ttpwd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_3cmm7")
-animation = &"death"
-frame = 2
-frame_progress = 1.0
+animation = &"front_attack"
+frame_progress = 0.964171
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 scale = Vector2(3, 3)

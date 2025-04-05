@@ -19,7 +19,9 @@ func _on_start_pressed() -> void:
 
 
 func _on_how_to_play_pressed() -> void:
-	pass # Replace with function body.
+	print("On how to play pressed")
+	$MainMenuMusicAudioStreamPlayer.stop()
+	get_tree().change_scene_to_file("res://scenes/day_scene.tscn")
 
 
 func _on_about_pressed() -> void:

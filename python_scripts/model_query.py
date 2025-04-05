@@ -109,17 +109,15 @@ Output:
 
 messages = [{
     "role": "system",
-    "content": generate_monster_stats_system_prompt
+    "content": day0_system_prompt if sys.argv[1] == '1' else generate_monster_stats_system_prompt
 }]
 
-if os.path.isfile("./messages.json"):
-    with open("./messages.json", "r") as file:
+if os.path.isfile("python_scripts/messages.json"):
+    with open("python_scripts/messages.json", "r") as file:
         messages += json.load(file)
 
-print(messages)
-
 if len(sys.argv) > 1:
-    prompt = sys.argv[1]
+    prompt = sys.argv[2]
 
     messages.append({
         "role": "user",
@@ -136,7 +134,7 @@ messages.append({
     "content": response_text
 })
 
-with open("./messages.json", "w+") as file:
+with open("python_scripts/messages.json", "w+") as file:
     messages_without_system_prompt = [msg for msg in messages if msg["role"] != "system"]
     json.dump(messages_without_system_prompt, file)
 
