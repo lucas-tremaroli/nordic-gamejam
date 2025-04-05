@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var enemy_scene : PackedScene
-@onready var player = $Player 
+@onready var player = $Player
 
 var enemy_timer = 0
 var enemy_timer_threshold : int = 5
@@ -25,6 +25,8 @@ func _on_player_died():
 func _process(delta: float) -> void:
 	enemy_timer += delta
 	spawn_enemies()
+	if $BackgroundMusicAudioStreamPlayer.playing == false:
+		$BackgroundMusicAudioStreamPlayer.play()
 
 func end_dream_and_show_score(hours_slept: float):
 	var score_screen = preload("res://scenes/SleepScoreScreen.tscn").instantiate()

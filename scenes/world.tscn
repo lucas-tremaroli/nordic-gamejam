@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tw1y4p16qms6"]
+[gd_scene load_steps=16 format=3 uid="uid://tw1y4p16qms6"]
 
 [ext_resource type="Script" uid="uid://ck5s838r8durf" path="res://scripts/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://nmadgoonxh8p" path="res://scenes/playerv2.tscn" id="1_w6l67"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://huv5utvoyv33" path="res://art/tilesets/grass.png" id="3_hpcfq"]
 [ext_resource type="Texture2D" uid="uid://byb5adxwsy6hu" path="res://art/tilesets/plains.png" id="4_u8fkr"]
 [ext_resource type="Texture2D" uid="uid://b6wwvyu31u0jb" path="res://art/objects/objects.png" id="5_qxsch"]
+[ext_resource type="AudioStream" uid="uid://4dicvo1opt26" path="res://audio/pixelated_night.mp3" id="7_i7141"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y0jo2"]
 texture = ExtResource("3_hpcfq")
@@ -108,6 +109,18 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
+size = Vector2(10316, 198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7141"]
+size = Vector2(10316, 198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrxx"]
+size = Vector2(294, 6862)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4gi"]
+size = Vector2(318, 6862)
+
 [node name="world" type="Node2D"]
 position = Vector2(116, -631)
 script = ExtResource("1_qfnet")
@@ -135,3 +148,28 @@ curve = SubResource("Curve2D_qfnet")
 [node name="EnemySpawnPathFollow" type="PathFollow2D" parent="EnemySpawnPath"]
 position = Vector2(-3531, -1047)
 rotation = 0.0117087
+
+[node name="MapBorder" type="StaticBody2D" parent="."]
+position = Vector2(-1, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(13, -2329)
+shape = SubResource("RectangleShape2D_qfnet")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(-49, 4242)
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(-4951, 936)
+shape = SubResource("RectangleShape2D_4mrxx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(4746, 922)
+shape = SubResource("RectangleShape2D_7r4gi")
+
+[node name="BackgroundMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_i7141")
+volume_db = -5.0
