@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bgim7hxdkomvn"]
 
-[ext_resource type="Script" path="res://scripts/sleep_score_screen.gd" id="1_14htt"]
+[ext_resource type="Script" uid="uid://co0fwgsy2t4rl" path="res://scripts/sleep_score_screen.gd" id="1_14htt"]
 [ext_resource type="Texture2D" uid="uid://bcj0jpx2rw15" path="res://assets/frame2.png" id="1_snegu"]
 [ext_resource type="FontFile" uid="uid://dggs4tknroyo3" path="res://assets/PIXEL CRAFT.ttf" id="3_ukw2y"]
 
