@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
-const SPEED : int = 100
+const SPEED : int = 40
 const CHANGE_DIR_TIME := 1.5
+
+var player_attack_strength_base_value = 20
+@onready var player_attack_strength = Global.player_attack_strength_stat_multiplier * player_attack_strength_base_value
+
 
 var player = null
 var health : int = 100
@@ -10,6 +14,7 @@ var player_in_attack_zone : bool = false
 var direction := Vector2.ZERO
 var change_dir_timer := 0.0
 var can_take_damage = true
+
 
 func _physics_process(delta: float) -> void:
 	take_damage()
@@ -57,19 +62,16 @@ func _on_enemy_hitbox_body_exited(body: Node2D) -> void:
 func take_damage():
 	if player_in_attack_zone and Global.player_current_attack:
 		if can_take_damage:
-			print("ouch")
 			$CanTakeDamageCooldown.start()
 			can_take_damage = false
-			health = health - 20
+			health = health - player_attack_strength
 			if health <= 0:
-				print("enemy dead")
 				self.queue_free()
 
 
 func pick_new_direction():
 	direction.x = randf_range(-SPEED, SPEED)
 	direction.y = randf_range(-SPEED, SPEED)
-	direction = direction.normalized()
 	change_dir_timer = CHANGE_DIR_TIME
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://brtyeo34aq1w"]
 
 [ext_resource type="Script" uid="uid://5akdnlthp7hf" path="res://scripts/enemy.gd" id="1_tmani"]
-[ext_resource type="Texture2D" uid="uid://vmupsl35fu2p" path="res://art/characters/piskel.png" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://bvj4kcpt26i72" path="res://art/characters/piskel.png" id="2_4ra3w"]
 [ext_resource type="AudioStream" uid="uid://d2o4y834l648w" path="res://audio/enemy_engage.wav" id="4_5uy6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
@@ -111,9 +111,9 @@ wait_time = 0.5
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(0.172549, 0.960784, 0, 1)
 offset_left = -27.0
-offset_top = 27.6667
+offset_top = 39.6667
 offset_right = 27.0
-offset_bottom = 39.6667
+offset_bottom = 51.6667
 show_percentage = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

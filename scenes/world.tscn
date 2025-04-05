@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tw1y4p16qms6"]
+[gd_scene load_steps=20 format=3 uid="uid://tw1y4p16qms6"]
 
 [ext_resource type="Script" uid="uid://ck5s838r8durf" path="res://scripts/world.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://nmadgoonxh8p" path="res://scenes/playerv2.tscn" id="1_w6l67"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byb5adxwsy6hu" path="res://art/tilesets/plains.png" id="4_u8fkr"]
 [ext_resource type="Texture2D" uid="uid://b6wwvyu31u0jb" path="res://art/objects/objects.png" id="5_qxsch"]
 [ext_resource type="AudioStream" uid="uid://4dicvo1opt26" path="res://audio/pixelated_night.mp3" id="7_i7141"]
+[ext_resource type="FontFile" uid="uid://dggs4tknroyo3" path="res://assets/PIXEL CRAFT.ttf" id="8_4mrxx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y0jo2"]
 texture = ExtResource("3_hpcfq")
@@ -105,9 +106,9 @@ sources/2 = SubResource("TileSetAtlasSource_xyyj7")
 
 [sub_resource type="Curve2D" id="Curve2D_qfnet"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -3531, -1047, 0, 0, 0, 0, 3472, -965, 0, 0, 0, 0, -3559, 3601, 0, 0, 0, 0, 3376, 3511, 0, 0, 0, 0, -3448, 1094, 0, 0, 0, 0, 3293, 1397)
+"points": PackedVector2Array(0, 0, 0, 0, -517, 2266, 0, 0, 0, 0, -515, 1379, 0, 0, 0, 0, 1207, 1418, 0, 0, 0, 0, 1163, 2244, 0, 0, 0, 0, -409, 2238)
 }
-point_count = 6
+point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfnet"]
 size = Vector2(10316, 198)
@@ -152,8 +153,8 @@ layer_0/tile_data = PackedInt32Array(-196600, 2, 5, -131062, 2, 5, -65524, 2, 5,
 curve = SubResource("Curve2D_qfnet")
 
 [node name="EnemySpawnPathFollow" type="PathFollow2D" parent="EnemySpawnPath"]
-position = Vector2(-3531, -1047)
-rotation = 0.0117087
+position = Vector2(-517, 2266)
+rotation = -1.56854
 
 [node name="MapBorder" type="StaticBody2D" parent="."]
 position = Vector2(-1, 0)
@@ -184,11 +185,24 @@ volume_db = -5.0
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
 z_index = 1
-offset_left = 2102.0
-offset_top = 141.0
-offset_right = 2769.0
-offset_bottom = 228.0
+offset_left = 2184.0
+offset_top = 153.0
+offset_right = 2851.0
+offset_bottom = 240.0
 theme_override_styles/background = SubResource("StyleBoxFlat_7r4gi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_w7kh3")
 value = 100.0
 show_percentage = false
+
+[node name="HoursSlept" type="Label" parent="CanvasLayer"]
+offset_left = 99.0
+offset_top = 119.0
+offset_right = 817.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("8_4mrxx")
+theme_override_font_sizes/font_size = 80
+text = "Hours slept: 0/10"
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
