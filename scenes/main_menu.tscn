@@ -64,9 +64,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -146.0
-offset_top = -161.0
-offset_right = 146.0
-offset_bottom = 161.0
+offset_top = -113.0
+offset_right = 149.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 29
@@ -84,20 +84,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "Start Game"
-
-[node name="Button2" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_bqqt6")
-theme_override_font_sizes/font_size = 33
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
-theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
-text = "How to Play"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -138,5 +124,4 @@ stream = ExtResource("4_wu84c")
 volume_db = -5.0
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_about_pressed"]
