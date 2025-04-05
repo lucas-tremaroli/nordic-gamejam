@@ -11,18 +11,18 @@ config_version=5
 [application]
 
 config/name="nordic-gamejam"
-run/main_scene="uid://cafjlfomcp5no"
+run/main_scene="uid://b7fmokpj12ags"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://v2/scripts/global.gd"
+Global="*res://scripts/global.gd"
 
 [display]
 
 window/size/mode=2
-window/stretch/scale=4.0
+window/stretch/scale=1.01
 
 [input]
 

@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://tw1y4p16qms6"]
+
+[ext_resource type="PackedScene" uid="uid://nmadgoonxh8p" path="res://scenes/playerv2.tscn" id="1_w6l67"]
+[ext_resource type="PackedScene" uid="uid://brtyeo34aq1w" path="res://scenes/enemy.tscn" id="2_kdtuo"]
+[ext_resource type="Texture2D" uid="uid://huv5utvoyv33" path="res://art/tilesets/grass.png" id="3_hpcfq"]
+[ext_resource type="Texture2D" uid="uid://byb5adxwsy6hu" path="res://art/tilesets/plains.png" id="4_u8fkr"]
+[ext_resource type="Texture2D" uid="uid://b6wwvyu31u0jb" path="res://art/objects/objects.png" id="5_qxsch"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y0jo2"]
+texture = ExtResource("3_hpcfq")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cv75"]
+texture = ExtResource("4_u8fkr")
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+5:2/0 = 0
+4:2/0 = 0
+4:1/0 = 0
+3:3/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+3:6/0 = 0
+3:5/0 = 0
+3:4/0 = 0
+2:4/0 = 0
+1:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+2:6/0 = 0
+1:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+5:5/0 = 0
+5:4/0 = 0
+4:4/0 = 0
+4:5/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyyj7"]
+texture = ExtResource("5_qxsch")
+0:0/0 = 0
+0:1/0 = 0
+5:0/0 = 0
+0:5/size_in_atlas = Vector2i(3, 4)
+0:5/0 = 0
+6:7/size_in_atlas = Vector2i(2, 2)
+6:7/0 = 0
+8:6/size_in_atlas = Vector2i(2, 3)
+8:6/0 = 0
+10:7/size_in_atlas = Vector2i(2, 2)
+10:7/0 = 0
+10:0/size_in_atlas = Vector2i(2, 1)
+10:0/0 = 0
+11:2/size_in_atlas = Vector2i(1, 2)
+11:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_2al5j"]
+sources/0 = SubResource("TileSetAtlasSource_y0jo2")
+sources/1 = SubResource("TileSetAtlasSource_8cv75")
+sources/2 = SubResource("TileSetAtlasSource_xyyj7")
+
+[node name="world" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource("2_kdtuo")]
+position = Vector2(1005, 516)
+
+[node name="Player" parent="." instance=ExtResource("1_w6l67")]
+position = Vector2(64, 64)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_2al5j")
+format = 2
+layer_0/tile_data = PackedInt32Array(131098, 131073, 6, 131099, 131073, 6, 131100, 131073, 6, 131101, 131073, 6, 131102, 131073, 6, 131103, 131073, 6, 131097, 65537, 6, 65561, 65537, 5, 25, 65537, 5, 65562, 131073, 5, 65563, 131073, 5, 65564, 131073, 5, 65565, 131073, 5, 65566, 131073, 5, 65567, 131073, 5, 26, 131073, 5, 27, 131073, 5, 28, 131073, 5, 29, 131073, 5, 30, 131073, 5, 31, 131073, 5, 131104, 196609, 6, 65569, 196609, 6, 33, 196609, 5, 65568, 196609, 5, 32, 131073, 5, 65559, 1, 5, 131095, 1, 5, 196631, 1, 6, 23, 1, 4, 262168, 1, 7)
