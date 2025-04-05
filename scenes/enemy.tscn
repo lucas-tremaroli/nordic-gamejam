@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://brtyeo34aq1w"]
+[gd_scene load_steps=16 format=3 uid="uid://brtyeo34aq1w"]
 
 [ext_resource type="Script" uid="uid://5akdnlthp7hf" path="res://scripts/enemy.gd" id="1_tmani"]
 [ext_resource type="Texture2D" uid="uid://dm5vqcg5yc1xr" path="res://art/characters/little-bear-idle.png" id="2_4ra3w"]
@@ -61,14 +61,20 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tmani"]
 
 [sub_resource type="Gradient" id="Gradient_4ra3w"]
-offsets = PackedFloat32Array(0.198052, 0.506494, 0.805195)
-colors = PackedColorArray(1, 1, 1, 1, 0.568075, 0.568075, 0.568075, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.178571, 0.373377, 0.594156, 0.788961, 0.964286)
+colors = PackedColorArray(1, 1, 1, 1, 0.779719, 0.779719, 0.779719, 1, 0.568075, 0.568075, 0.568075, 1, 0.332044, 0.332044, 0.332044, 1, 0.14203, 0.14203, 0.14203, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5uy6h"]
 gradient = SubResource("Gradient_4ra3w")
 fill = 1
 fill_from = Vector2(0.509174, 0.522936)
-fill_to = Vector2(0.768349, 0.272936)
+fill_to = Vector2(0.662844, 0.261468)
+
+[sub_resource type="Curve2D" id="Curve2D_4ra3w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1471, -636.667, 0, 0, 0, 0, 1379, 611, 0, 0, 0, 0, 1356, -571.333, 0, 0, 0, 0, -1490, 641.667)
+}
+point_count = 4
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -101,11 +107,21 @@ scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_tmani")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 3
 position = Vector2(-0.125003, 2.3333)
 scale = Vector2(3.45671, 3.13542)
-energy = 0.75
+color = Color(0.961049, 0.931513, 0.923972, 1)
+energy = 1.85
 texture = SubResource("GradientTexture2D_5uy6h")
 texture_scale = 4.0
+
+[node name="EnemySpawns" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4ra3w")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawns"]
+position = Vector2(-1490, 641.667)
+rotation = 2.7387
+progress = 15517.2
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

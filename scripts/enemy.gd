@@ -42,5 +42,6 @@ func _on_enemy_hitbox_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_attack_zone = false
 
+
 func take_damage():
 	pass

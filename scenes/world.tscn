@@ -105,6 +105,7 @@ sources/2 = SubResource("TileSetAtlasSource_xyyj7")
 [node name="world" type="Node2D"]
 position = Vector2(116, -631)
 script = ExtResource("1_qfnet")
+enemy_scene = ExtResource("2_kdtuo")
 
 [node name="Enemy" parent="." instance=ExtResource("2_kdtuo")]
 
