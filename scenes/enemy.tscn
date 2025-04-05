@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://brtyeo34aq1w"]
+[gd_scene load_steps=17 format=3 uid="uid://brtyeo34aq1w"]
 
 [ext_resource type="Script" uid="uid://5akdnlthp7hf" path="res://scripts/enemy.gd" id="1_tmani"]
 [ext_resource type="Texture2D" uid="uid://dm5vqcg5yc1xr" path="res://art/characters/little-bear-idle.png" id="2_4ra3w"]
@@ -121,7 +121,7 @@ curve = SubResource("Curve2D_4ra3w")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawns"]
 position = Vector2(-1143.33, -614)
-rotation = 0.030832
+rotation = 0.0308318
 
 [node name="EnemyEngageAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-0.333333, 0)

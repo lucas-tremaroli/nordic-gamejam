@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_died
+
 var speed = 800
 var health = 500
 var is_alive = true
@@ -7,7 +9,6 @@ var current_direction = "none"
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_in_progress = false
-signal player_died
 
 
 func _physics_process(delta: float) -> void:
@@ -97,7 +98,6 @@ func player():
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown:
 		health -= 100
-		print(health)
 		enemy_attack_cooldown = false
 		$EnemyAttackCooldown.start()
 
