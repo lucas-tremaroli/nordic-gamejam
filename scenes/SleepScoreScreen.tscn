@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgim7hxdkomvn"]
+
+[ext_resource type="Script" uid="uid://co0fwgsy2t4rl" path="res://scripts/sleep_score_screen.gd" id="1_14htt"]
+[ext_resource type="Texture2D" uid="uid://bcj0jpx2rw15" path="res://assets/frame2.png" id="1_snegu"]
+[ext_resource type="FontFile" uid="uid://dggs4tknroyo3" path="res://assets/PIXEL CRAFT.ttf" id="3_ukw2y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m2174"]
+texture = ExtResource("1_snegu")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow0ml"]
+bg_color = Color(0.00784314, 0.239216, 0.329412, 0.588235)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14htt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14htt"]
+bg_color = Color(0.870588, 0.815686, 0.705882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukw2y"]
+bg_color = Color(0.207843, 0.247059, 0.305882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="SleepScoreScreen" type="CanvasLayer"]
+script = ExtResource("1_14htt")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -426.0
+offset_top = -484.5
+offset_right = 426.0
+offset_bottom = 484.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_m2174")
+
+[node name="PanelBg" type="Panel" parent="Panel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = -356.5
+offset_right = 321.0
+offset_bottom = 329.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ow0ml")
+
+[node name="HoursLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.5
+offset_top = -248.5
+offset_right = 207.5
+offset_bottom = 58.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.870588, 0.741176, 0.52549, 1)
+theme_override_fonts/font = ExtResource("3_ukw2y")
+theme_override_font_sizes/font_size = 80
+text = "You Slept
+7 Hours"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 177.0
+offset_right = 144.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.207843, 0.243137, 0.301961, 1)
+theme_override_colors/font_color = Color(0.85098, 0.8, 0.694118, 1)
+theme_override_fonts/font = ExtResource("3_ukw2y")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_14htt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_14htt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ukw2y")
+text = "Wake Up"
