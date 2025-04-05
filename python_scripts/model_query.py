@@ -136,6 +136,12 @@ messages.append({
 
 with open("python_scripts/messages.json", "w+") as file:
     messages_without_system_prompt = [msg for msg in messages if msg["role"] != "system"]
+
+    # Trim to only the first human and the ai message
+    # (keep only the first 2 messages)
+    if len(messages_without_system_prompt) > 2:
+        messages_without_system_prompt = messages_without_system_prompt[-2:]
+
     json.dump(messages_without_system_prompt, file)
 
 sys.stdout.write(response_text)
