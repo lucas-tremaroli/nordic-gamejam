@@ -38,9 +38,9 @@ Given the player's description of how they felt about their dream and how they w
 
 # Player Stats
 - movement_speed
-- attack_rate
 - hitpoints
 - attack_strength
+- ammo
 
 Each stat:
 - Must be an integer between 1 and 10 (inclusive)
@@ -55,9 +55,9 @@ Use this format **exactly**:
 
 {{
     "movement_speed": <int>,
-    "attack_rate": <int>,
     "hitpoints": <int>,
-    "attack_strength": <int>
+    "attack_strength": <int>,
+    "ammo": <int>
 }}
 
 Example:
@@ -65,9 +65,9 @@ Input: "I wish I was faster and stronger."
 Output:
 {{
     "movement_speed": 7,
-    "attack_rate": 2,
     "hitpoints": 3,
-    "attack_strength": 8
+    "attack_strength": 8,
+    "ammo": 3
 }}
 
 # Player Input:

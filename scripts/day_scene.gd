@@ -19,8 +19,8 @@ func _process(delta: float) -> void:
 	if player_stats_data:
 		Global.player_movement_speed_stat_multiplier = player_stats_data["movement_speed"]
 		Global.player_hitpoints_stat_multiplier = player_stats_data["hitpoints"]
-		Global.player_endurance_stat_multiplier = player_stats_data["endurance"]
 		Global.player_attack_strength_stat_multiplier = player_stats_data["attack_strength"]
+		Global.player_ammo_stat = player_stats_data["ammo"]
 		player_stats_data = null
 		get_tree().change_scene_to_file("res://scenes/sleeping.tscn")
 	

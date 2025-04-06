@@ -227,7 +227,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"back_attack",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -304,7 +304,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"front_attack",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -367,7 +367,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"side_attack",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -431,8 +431,7 @@ shape = SubResource("CircleShape2D_ttpwd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_3cmm7")
-animation = &"front_attack"
-frame_progress = 0.964171
+animation = &"back_attack"
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 scale = Vector2(3, 3)
@@ -453,7 +452,7 @@ limit_right = 4710
 limit_bottom = 3500
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.421
 
 [connection signal="player_died" from="." to="." method="_on_player_died"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
