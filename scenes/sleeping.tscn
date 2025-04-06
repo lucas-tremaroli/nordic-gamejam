@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wsawtosf157j"]
+[gd_scene load_steps=10 format=3 uid="uid://bv05hfx574d2t"]
 
 [ext_resource type="Texture2D" uid="uid://bjnr4m5b3gtv3" path="res://assets/bedroom.png" id="1_mksg0"]
 [ext_resource type="Script" path="res://scripts/sleeping.gd" id="1_xbgof"]
