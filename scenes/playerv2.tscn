@@ -436,6 +436,7 @@ frame_progress = 0.964171
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 scale = Vector2(3, 3)
+collision_mask = 2
 
 [node name="PlayerHitboxCollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(0, 8)

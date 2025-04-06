@@ -135,6 +135,7 @@ enemy_scene = ExtResource("2_kdtuo")
 
 [node name="Player" parent="." instance=ExtResource("1_w6l67")]
 position = Vector2(285, 1840)
+collision_mask = 16
 
 [node name="Terrain" type="TileMap" parent="."]
 z_index = -1

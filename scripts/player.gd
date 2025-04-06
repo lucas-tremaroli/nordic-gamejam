@@ -115,6 +115,7 @@ func player():
 
 
 func enemy_attack():
+	print("enemy attack", enemy_in_attack_range, enemy_attack_cooldown)
 	if enemy_in_attack_range and enemy_attack_cooldown:
 		hitpoints -= 10
 		player_health_changed.emit()

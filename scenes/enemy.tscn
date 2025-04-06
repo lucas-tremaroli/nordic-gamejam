@@ -58,7 +58,6 @@ point_count = 4
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_tmani")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -68,8 +67,7 @@ animation = &"walk"
 
 [node name="DetectionArea" type="Area2D" parent="."]
 scale = Vector2(3, 3)
-collision_layer = 2
-collision_mask = 5
+collision_layer = 0
 
 [node name="DetectionAreaCollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 scale = Vector2(3, 3)
@@ -81,6 +79,7 @@ shape = SubResource("CircleShape2D_1wki1")
 
 [node name="EnemyHitbox" type="Area2D" parent="."]
 scale = Vector2(3, 3)
+collision_layer = 0
 
 [node name="EnemyhitboxCollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 scale = Vector2(3, 3)
