@@ -11,40 +11,6 @@ client = AsyncAzureOpenAI(
     api_version="2024-03-01-preview"
 )
 
-system_prompt = """
-# Background info
-You are acting as a teenage friend to a teenage player in a fictional world. Keep the conversation fun and light. In this world there is a day and night cycle.
-During the night the gameplay happens in the dreams where the player fights off enemies. What happens in the day dialog with you affects the abilities of the player and the enemies.
-During the day the player has a casual friendly chat with you about a real-life problem you are having.
-You need to start by deciding on the abilities of the enemies. The enemy abilities cannot change, make these fun and extreme rather than average. Then shape the conversation strictly around the enemies abilities without directly mentioning anything related to the night-time, sleep, dreams or the abilities.
-You need to make the player take a stance on real-life decisions resembling the night-time abilities of the player, make the decision affect the abilities more dramatically in certain directions so there is one ability clearly overruling the others.
-
-
-# Output format
-The output should contain a maximum of one sentence message response to the player and the ability ratings.
-Give the abilities a rating of 0-10, with combined maximum of 20 for both the player and enemies.
-The player abilities are: movement_speed, endurance, hitpoints, attack_strength
-The enemy abilities are: movement_speed, enemy_count, hitpoints, attack_strength
-Format the output as a single JSON object containing the message response and the ability ratings:
-{
-    "message": "..."
-    "player_abilities": {
-        "ability_name": 0,
-        ...
-    },
-    "enemy_abilities": {
-        "ability_name": 0,
-        ...
-    }
-}
-
-# Example
-
-
-Start by initiating the conversation with the user.
-"""
-
-
 background_info = """
 You are an agent in a game and need to provide dialog responses to what the player says. Below is a description of the idea behind the game and your character role in it.
 
@@ -72,7 +38,7 @@ Given the player's description of how they felt about their dream and how they w
 
 # Player Stats
 - movement_speed
-- endurance
+- attack_rate
 - hitpoints
 - attack_strength
 
@@ -89,7 +55,7 @@ Use this format **exactly**:
 
 {{
     "movement_speed": <int>,
-    "endurance": <int>,
+    "attack_rate": <int>,
     "hitpoints": <int>,
     "attack_strength": <int>
 }}
@@ -99,7 +65,7 @@ Input: "I wish I was faster and stronger."
 Output:
 {{
     "movement_speed": 7,
-    "endurance": 2,
+    "attack_rate": 2,
     "hitpoints": 3,
     "attack_strength": 8
 }}
