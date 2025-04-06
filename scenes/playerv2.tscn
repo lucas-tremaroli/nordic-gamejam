@@ -1,7 +1,11 @@
-[gd_scene load_steps=57 format=3 uid="uid://nmadgoonxh8p"]
+[gd_scene load_steps=61 format=3 uid="uid://nmadgoonxh8p"]
 
 [ext_resource type="Script" uid="uid://dw2g8ibladnaf" path="res://scripts/player.gd" id="1_3dw55"]
 [ext_resource type="Texture2D" uid="uid://bvhmx38kaaoey" path="res://art/characters/player.png" id="2_nqod1"]
+[ext_resource type="AudioStream" uid="uid://lylyj8gmud3e" path="res://assets/attack.wav" id="3_yknqo"]
+[ext_resource type="AudioStream" uid="uid://tqkxd8iaiob5" path="res://assets/shoot.wav" id="4_4iht3"]
+[ext_resource type="AudioStream" uid="uid://ciu8y207umdad" path="res://assets/player_hit.wav" id="5_hxc6p"]
+[ext_resource type="AudioStream" uid="uid://qdm2rest5va1" path="res://assets/player_die.wav" id="6_nvsl2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ttpwd"]
 radius = 8.0
@@ -452,6 +456,22 @@ limit_right = 4710
 limit_bottom = 3500
 
 [node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="AttackAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yknqo")
+volume_db = 3.0
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4iht3")
+volume_db = 5.0
+
+[node name="HitAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hxc6p")
+volume_db = 10.0
+
+[node name="DieAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_nvsl2")
+volume_db = 10.0
 
 [connection signal="player_died" from="." to="." method="_on_player_died"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]

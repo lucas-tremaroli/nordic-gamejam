@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	if hitpoints <= 0:
 		is_alive = false
 		hitpoints = 0
+		$DieAudio.play()
 		emit_signal("player_died")
 
 
@@ -122,6 +123,7 @@ func enemy_attack():
 		player_health_changed.emit()
 		enemy_attack_cooldown = false
 		$EnemyAttackCooldown.start()
+		$HitAudio.play()
 
 
 func _on_enemy_attack_cooldown_timeout() -> void:
@@ -134,6 +136,7 @@ func attack():
 		print("attack")
 		Global.player_current_attack = true
 		attack_in_progress = true
+		$AttackAudio.play()
 		if dir == "right":
 			$AnimatedSprite2D.flip_h = false
 			$AnimatedSprite2D.play("side_attack")
@@ -160,6 +163,7 @@ func shoot():
 	print("shoot")
 	Global.player_ammo_stat -= 1
 	player_ammo_changed.emit()
+	$ShootAudio.play()
 		
 	var instance = projectile.instantiate()
 	instance.position = position
