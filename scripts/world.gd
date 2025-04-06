@@ -3,6 +3,7 @@ extends Node2D
 @onready var player = $Player
 @onready var health_bar
 @onready var hours_slept_label
+@onready var ammo_label
 
 @export var enemy_scene : PackedScene
 var enemy_timer = 0
@@ -13,9 +14,12 @@ var enemy_timer_threshold : int = 4
 func _ready() -> void:
 	player.connect("player_died", Callable(self, "_on_player_died"))
 	player.connect("player_health_changed", Callable(self, "_on_player_health_update"))
+	player.connect("player_ammo_changed", Callable(self, "_on_player_ammo_update"))
 	health_bar = get_node("CanvasLayer/HealthBar")
 	hours_slept_label = get_node("CanvasLayer/HoursSlept")
-
+	ammo_label = get_node("CanvasLayer/Ammo")
+	
+	_on_player_ammo_update()
 	Global.seconds_survived = 0
 	Global.score = 0
 	$ScoreTimer.start()
@@ -62,3 +66,7 @@ func _on_score_timer_timeout() -> void:
 
 	if Global.score == 10:
 		_on_player_died()
+
+
+func _on_player_ammo_update() -> void:
+	ammo_label.text = "Ammo: %d" % Global.player_ammo_stat

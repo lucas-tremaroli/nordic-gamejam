@@ -9,3 +9,4 @@ var player_movement_speed_stat_multiplier = 5
 var player_hitpoints_stat_multiplier = 3
 var player_endurance_stat_multiplier = 2
 var player_attack_strength_stat_multiplier = 1
+var player_ammo_stat = 3

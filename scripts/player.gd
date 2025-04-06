@@ -15,10 +15,12 @@ var attack_in_progress = false
 
 signal player_died
 signal player_health_changed
+signal player_ammo_changed
 
 
 func _ready() -> void:
 	player_health_changed.emit()
+	player_ammo_changed.emit()
 
 
 func _physics_process(delta: float) -> void:
@@ -46,7 +48,7 @@ func player_movement(delta: float) -> void:
 		current_direction = "up"
 		velocity.y = -1
 		
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and Global.player_ammo_stat > 0:
 		shoot()
 
 	if velocity.x == 0 and velocity.y == 0:
@@ -115,7 +117,6 @@ func player():
 
 
 func enemy_attack():
-	print("enemy attack", enemy_in_attack_range, enemy_attack_cooldown)
 	if enemy_in_attack_range and enemy_attack_cooldown:
 		hitpoints -= 10
 		player_health_changed.emit()
@@ -157,6 +158,9 @@ func _on_attack_cooldown_timeout() -> void:
 
 func shoot():
 	print("shoot")
+	Global.player_ammo_stat -= 1
+	player_ammo_changed.emit()
+		
 	var instance = projectile.instantiate()
 	instance.position = position
 	if current_direction == "right":

@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxt7i1u7x3en1"]
+[gd_scene load_steps=4 format=3 uid="uid://b7j06t1fdocuh"]
 
-[ext_resource type="Texture2D" uid="uid://fcjpb5mdwg6e" path="res://icon.svg" id="1_c8fcr"]
-[ext_resource type="Script" uid="uid://co1v0q2g486n3" path="res://scripts/projectile.gd" id="1_q3m7n"]
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_q3m7n"]
+[ext_resource type="Texture2D" uid="uid://cxxqxtfn0ns0d" path="res://assets/Tuc Crackers Logo.png" id="2_q3m7n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3m7n"]
-radius = 67.4685
+radius = 43.1045
 
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 4
@@ -12,7 +12,10 @@ collision_mask = 18
 script = ExtResource("1_q3m7n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_c8fcr")
+position = Vector2(-3.625, -0.5)
+scale = Vector2(0.468593, 0.458333)
+texture = ExtResource("2_q3m7n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 2)
 shape = SubResource("CircleShape2D_q3m7n")

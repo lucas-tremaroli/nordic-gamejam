@@ -204,6 +204,15 @@ theme_override_fonts/font = ExtResource("8_4mrxx")
 theme_override_font_sizes/font_size = 80
 text = "Hours slept: 0/10"
 
+[node name="Ammo" type="Label" parent="CanvasLayer"]
+offset_left = 2182.0
+offset_top = 272.0
+offset_right = 2900.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("8_4mrxx")
+theme_override_font_sizes/font_size = 80
+text = "Ammo: X"
+
 [node name="ScoreTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
